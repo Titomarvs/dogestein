@@ -1,0 +1,835 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(-45deg,
+      #6b44b4,
+      #bc74dd,
+      #411e7d,
+      #54549c,
+      #9fbbc9,
+      #4c366c);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  color: white;
+}
+
+.head {
+  max-width: 480px;
+  border: 2px solid #a6a6a6;
+  margin: auto;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  font-family: "Orbitron", sans-serif;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.score {
+  margin-top: 10px;
+}
+
+.container-game {
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1rem;
+  margin: auto;
+  padding: 20px;
+}
+
+.container {
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 1rem;
+  margin: auto;
+  padding: 20px;
+}
+
+.cell div {
+  height: 130px;
+  border-radius: 4px;
+}
+
+.cell {
+  position: relative;
+  cursor: pointer;
+}
+
+.front {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #a6a6a6;
+  background-color: #f2f2f2;
+  transform: rotateY(90deg);
+}
+
+.back {
+  background-color: #333;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+.flip {
+  transform: rotateY(0deg);
+}
+
+.match {
+  transform: rotateY(0deg);
+}
+
+.show {
+  transform: rotateY(0deg);
+}
+
+@media screen and (min-width: 770px) {
+  .head {
+    max-width: 760px;
+  }
+
+  .container {
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .cell div {
+    height: 140px;
+  }
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1000;
+  border-radius: 8px;
+}
+
+.popup-content button {
+  background: #4CAF50;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.popup-content button:hover {
+  background: #45a049;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.description {
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ecf23374, 0 0 30px #f6f634;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .box {
+    width: 100%;
+  }
+}
+
+.description2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(90deg, #123c80, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px 20px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.description2,
+.box {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.0s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box {
+  background: linear-gradient(135deg, #222, #444);
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  right: 50%;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+main {
+  background-image: url(./img/bkg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 670px;
+  text-align: center;
+  padding: 40px;
+  margin: 20px auto;
+  visibility: visible;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  animation: float 3s ease-in-out infinite, fadeIn 1.5s ease-in-out;
+}
+
+.meme {
+  display: flex;
+  align-items: center;
+  gap: 310px;
+  position: relative;
+  left: -7%;
+}
+
+.meme-in,
+.crypto {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.in {
+  margin-left: 2px;
+}
+
+.slideup img {
+  width: 45%;
+  height: 45%;
+  animation: slideUp 1.5s ease-in-out forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(-320px);
+    opacity: 1;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+
+  /* For mobile screens */
+  .smartest {
+    display: none;
+  }
+
+  .ressmartest {
+    display: inline;
+  }
+}
+
+@media screen and (min-width: 769px) {
+
+  /* For web screens */
+  .ressmartest {
+    display: none;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+
+
+  .description {
+    position: relative;
+    right: 3%;
+    /* Adjusted spacing */
+    margin-right: 105%;
+  }
+
+
+  @keyframes slideUp {
+    100% {
+      transform: translateY(-100vh);
+      /* Adjusted animation for medium screens */
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+
+
+  .slideup img {
+    width: 70%;
+  }
+
+  @keyframes slideUp {
+    100% {
+      transform: translateY(-15vh);
+      /* Less movement for smaller screens */
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 20px;
+  }
+
+  .slideup img {
+    width: 90%;
+  }
+
+  @keyframes slideUp {
+    100% {
+      transform: translateY(-5vh);
+      /* Minimal movement for small screens */
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .meme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centers the text */
+    flex-wrap: nowrap;
+    /* Prevents stacking */
+    gap: 5px;
+    /* Space between words */
+  }
+
+  .meme-in {
+    display: inline-block;
+    white-space: nowrap;
+    /* Ensures "Meme in" stays together */
+  }
+
+  .crypto {
+    display: inline-block;
+    white-space: nowrap;
+    /* Ensures "Crypto!" stays on the same line */
+  }
+}
+
+
+
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  /* Allows icons to wrap on smaller screens */
+}
+
+.buynow {
+
+  position: relative;
+  right: 5%;
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.buynow:hover {
+  background-color: #ffdb4d;
+  transform: scale(1.05);
+}
+
+.social-icon img,
+.social-icon i {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.x-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.fa-telegram-plane {
+  font-size: 50px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .icon-container {
+    display: flex;
+    flex-direction: row;
+    /* Ensure horizontal layout */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    /* Prevent unwanted spacing */
+  }
+
+  .social-icon img,
+  .social-icon i {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+  }
+
+  .buynow {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .social-icon img,
+  .social-icon i {
+    width: 40px;
+    height: 40px;
+
+  }
+
+  .x-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fa-telegram-plane {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .icon-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .buynow {
+    width: 90%;
+    /* Makes the button almost full-width */
+    text-align: center;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .social-icon img,
+  .social-icon i {
+    width: 35px;
+    height: 35px;
+  }
+
+  .x-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .fa-telegram-plane {
+    font-size: 35px;
+  }
+}
+
+
+.play-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.description {
+  font-size: 100px;
+  font-weight: bold;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, auto);
+    margin-left: 45%;
+    width: 100% !important;
+  }
+
+  .container-game {
+    grid-template-columns: repeat(3, auto);
+
+  }
+
+  .description {
+    font-size: 60px;
+  }
+
+  .description2 {
+    font-size: 1.2rem;
+  }
+
+  .box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .meme {
+    gap: 10px;
+    left: 0;
+  }
+
+  .buynow {
+    right: 0;
+    margin-top: 10px;
+  }
+
+
+  .social-icon img,
+  .social-icon i {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fa-telegram-plane {
+    font-size: 40px;
+  }
+
+  .logo img {
+    width: 80px;
+  }
+
+
+
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: repeat(1, auto);
+  }
+
+  .description {
+    font-size: 40px;
+  }
+
+  .description2 {
+    font-size: 1rem;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .meme {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .buynow {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .icon-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .logo img {
+    width: 60px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.center-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.buynow {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.buynow:hover {
+  background-color: #ffdb4d;
+  transform: scale(1.05);
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: auto;
+}
+
+.social-icon img,
+.social-icon i {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.x-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.fa-telegram-plane {
+  font-size: 50px;
+  color: #0088cc;
+}
+
+.fa-telegram-plane:hover {
+  color: #1DA1F2;
+}
+
+@media (max-width: 480px) {
+
+
+  .logo {
+    margin-left: 0;
+    order: 3;
+  }
+
+  .logo img {
+    width: 60px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  .center-button {
+    order: 2;
+    flex: 1;
+    text-align: center;
+  }
+
+  .buynow {
+    width: auto;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .icon-container {
+    order: 1;
+    margin-right: 0;
+    gap: 10px;
+  }
+
+  .social-icon img,
+  .social-icon i {
+    width: 30px;
+    height: 30px;
+  }
+
+  .fa-telegram-plane {
+    font-size: 30px;
+  }
+}
+
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+.logo h1 {
+  font-size: 1.8rem;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+}
+
+.center-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.buynow {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #ffcc00;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buynow:hover {
+  background: #ffdd33;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-container img,
+.icon-container i {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .center-button {
+    order: 2;
+    margin: 10px 0;
+  }
+
+  .icon-container {
+    order: 3;
+    justify-content: center;
+  }
+}
+
+
+
+.container1 {
+  display: flex;
+  align-items: center;
+  background-color: #153450;
+  padding: 10px;
+  border-radius: 1px;
+  width: 550px;
+  border-radius: 10%;
+}
+#codeText {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.copy-btn {
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.copy-btn:hover {
+  background-color: #1e60d4;
+}

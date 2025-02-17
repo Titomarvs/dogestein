@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogestein</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="./css/img/dogesteinicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+<script defer src="script.js"></script>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="./css/img/dogestein.png" alt="Logo">
+        <h1>Dogestein</h1>
+    </div>
+
+    <!-- Centered Buy Now Button -->
+    <div class="center-button">
+        <button class="buynow">Buy Now</button>
+        
+    </div>
+
+<div class="icon-container">
+    <a href="https://x.com/DogesteinTOKEN" target="_blank" class="social-icon">
+        <img src="./css/img/xlogo.png" alt="X Logo" class="x-logo">
+    </a>
+    <a href="https://telegram.org" target="_blank" class="social-icon">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+</div>
+
+</header>
+    <main>    
+      <div class="container">
+            <p class="description">
+                <span class="smartest" >The Smartest</span> 
+                <span class="meme">
+                    <span class="ressmartest" >The Smartest</span> 
+                    <span class="meme-in">Meme <span class="in">in</span></span>
+                    <span class="crypto">Crypto!</span>
+                    
+                </span>
+            </p>
+        </div>
+
+        <div class="container1">
+            <span id="codeText">J3TqbUgHurQGNxWtT88UQPcMNVmrL875pToQZdrkpump</span>
+            <button class="copy-btn" onclick="copyText()">📋</button>
+        </div>
+    
+        <script>
+            function copyText() {
+                const text = document.getElementById("codeText").innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("Copied to clipboard!");
+                }).catch(err => {
+                    console.error("Failed to copy text: ", err);
+                });
+            }
+        </script>
+
+
+        <div class="controls-container">
+            <p id="result"></p>
+            <a href="#thegame"><button class="play-btn" id="start">Play Game</button></a>
+            <div class="slideup">
+                <img src="./css/img/dogestein12.png" alt="">
+            </div>
+        </div>
+    </main>
+    <center>
+    <p class="description2" >Big brain. Big gains. Meet Dogestein—the genius of the blockchain!
+        From the mind of a genius… and the face of a meme. Welcome to Dogestein!
+    </p>
+</center>
+       <div class="container">
+        <div class="box">
+            <h2>💡 Genius Meets Memes</h2><br>
+            <p>Dogestein combines the brilliance of Einstein with the legendary status of Doge, creating a meme coin that’s as smart as it is fun.</p>
+        </div>
+        <div class="box">
+            <h2>🔗 Built for the Future</h2><br>
+            <p>With cutting-edge blockchain technology, Dogestein is designed for security, scalability, and long-term growth—powered by the wisdom of the past and the innovation of the future.</p>
+        </div>
+        <div class="box">
+            <h2>🚀 A Coin for Visionaries</h2><br>
+            <p>Whether you’re here to innovate, invest, or just enjoy the ride, Dogestein is your key to unlocking new possibilities in the crypto space.</p>
+        </div>
+        <div class="box">
+            <h2>😂 Intelligence with a Twist</h2>br
+            <p>From hilarious scientific theories to meme-worthy moments, Dogestein keeps the crypto world entertained while proving that knowledge is power—and memes are unstoppable.</p>
+        </div>
+    </div>
+    <div class="head">
+        <h2>Memmory Game</h2>
+        <div class="score">Score: <span>0</span></div>
+    </div>
+
+    <div class="container-game" id="thegame">
+        <div class="cell">
+            <div class="front" data-index="1"><img src="css/img/1.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="1"><img src="css/img/2.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="2"><img src="css/img/3.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="2"><img src="css/img/4.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="3"><img src="css/img/5.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="3"><img src="css/img/6.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="4"><img src="css/img/7.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="4"><img src="css/img/8.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="5"><img src="css/img/9.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="5"><img src="css/img/10.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="6"><img src="css/img/11.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+        <div class="cell">
+            <div class="front" data-index="6"><img src="css/img/12.png" alt=""></div>
+            <div class="back"></div>
+        </div>
+    </div>
+</body>
+</html>
